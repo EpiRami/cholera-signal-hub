@@ -7,61 +7,37 @@
   <meta name="description" content="Public-signal dashboard and decision assistant for cholera in Yemen." />
   <style>
     :root { --bg:#ffffff; --ink:#0a1b2a; --muted:#6b7a8c; --accent:#1f6feb; --card:#f4f7fb; }
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial}
     header{padding:28px 20px;border-bottom:1px solid #e8eef6;background:#fff;position:sticky;top:0;z-index:1}
     .wrap{max-width:980px;margin:0 auto;padding:0 20px}
     nav a{margin-right:16px;color:var(--ink);text-decoration:none;font-weight:600}
     nav a:hover{color:var(--accent)}
-    h1{margin:14px 0 6px;font-size:28px} h2{margin:28px 0 10px;font-size:22px}
+    h1{margin:14px 0 6px;font-size:28px}
+    h2{margin:28px 0 10px;font-size:22px}
     .tagline{color:var(--muted);margin:0 0 6px}
     .card{background:var(--card);border:1px solid #e8eef6;border-radius:16px;padding:18px;margin:18px 0}
-    .btn{display:inline-block;padding:12px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-    .btn:hover{filter:brightness(0.95)}
     .embed-placeholder{display:grid;place-items:center;height:360px;border:2px dashed #cfd9e6;border-radius:14px;color:var(--muted);background:#fff}
     footer{margin:32px 0 24px;color:var(--muted);font-size:14px}
     .kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
     .kpi{background:#fff;border:1px solid #e8eef6;border-radius:12px;padding:14px}
     .small{font-size:14px;color:var(--muted)}
   </style>
-</head>
-  <!-- Botpress inline webchat (v3) -->
-<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
-<style>
-  /* Make the chat fill its container and hide the floating button */
-  #webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
-  #webchat .bpFab { display: none; }
-</style>
-<script>
-  // Mount inside the #webchat container and open immediately
-  window.botpress?.on("webchat:ready", () => {
-    window.botpress.open();
-  });
 
-  window.botpress.init({
-    botId: "c9431628-7bd8-45dc-a694-6d57f2e1670d",
-    clientId: "22a2f457-cec7-44db-8108-78b2e02e4638",
-    selector: "#webchat",              // <-- mount into your inline div
-    configuration: {
-      version: "v2",
-      color: "#3276EA",
-      variant: "solid",
-      headerVariant: "glass",
-      themeMode: "light",
-      fontFamily: "inter",
-      radius: 8,
-      feedbackEnabled: false,
-      soundEnabled: false,
-      proactiveMessageEnabled: false,
-      footer: "[⚡ by Botpress](https://botpress.com/?from=webchat)"
+  <!-- Botpress inline webchat (v3) -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <style>
+    /* Ensure chat fills container & hides floating button */
+    #webchat .bpWebchat {
+      position: unset;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      max-width: 100%;
     }
-  });
-</script>
+    #webchat .bpFab { display: none; }
+  </style>
+</head>
 
 <body>
   <header>
@@ -88,28 +64,27 @@
 
     <section id="dashboard" class="card">
       <h2>Weekly Dashboard</h2>
-      <p class="small">This embeds a Looker Studio (or similar) report built from ReliefWeb signals. Replace the placeholder below with your iframe in Step 3.</p>
-    <div style="position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid #e8eef6;background:#fff">
-  <iframe 
-    src="https://lookerstudio.google.com/embed/reporting/4c6e38f7-02aa-4e57-9ec5-e6aaf27bcc8b/page/I3laF"
-    frameborder="0"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
-    allowfullscreen
-    sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-  </iframe>
-</div>
+      <p class="small">This embeds a Looker Studio (or similar) report built from ReliefWeb signals.</p>
+      <div style="position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid #e8eef6;background:#fff">
+        <iframe 
+          src="https://lookerstudio.google.com/embed/reporting/4c6e38f7-02aa-4e57-9ec5-e6aaf27bcc8b/page/I3laF"
+          frameborder="0"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+          allowfullscreen
+          sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+        </iframe>
+      </div>
     </section>
 
- <section id="assistant" class="card">
-  <h2>AI Decision Assistant</h2>
-  <p class="small">Answers strictly in an operational schema: Key findings → Implications → 3 Priority Actions → Risks → Monitor Next → Sources.</p>
+    <section id="assistant" class="card">
+      <h2>AI Decision Assistant</h2>
+      <p class="small">Answers strictly in an operational schema: Key findings → Implications → 3 Priority Actions → Risks → Monitor Next → Sources.</p>
 
-  <!-- Inline Botpress container (fills the card) -->
-  <div id="webchat" style="width:100%; height:600px; border:1px solid #e8eef6; border-radius:14px; background:#fff; overflow:hidden"></div>
+      <!-- Inline Botpress chat container -->
+      <div id="webchat" style="width:100%; height:640px; border:1px solid #e8eef6; border-radius:14px; background:#fff; overflow:hidden"></div>
 
-  <p class="small">Public sources only (ReliefWeb/WHO/UNICEF/OCHA). AI support requires human validation.</p>
-</section>
-
+      <p class="small">Public sources only (ReliefWeb/WHO/UNICEF/OCHA). AI support requires human validation.</p>
+    </section>
 
     <section id="sources" class="card">
       <h2>Sources & Privacy</h2>
@@ -128,10 +103,42 @@
     </footer>
   </main>
 
+  <!-- Botpress init script -->
   <script>
-    const d = new Date(); 
+    (function startBotpress() {
+      function init() {
+        if (!window.botpress || !document.querySelector('#webchat')) return setTimeout(init, 100);
+        window.botpress.on('webchat:ready', () => {
+          window.botpress.open(); // open inside the container immediately
+        });
+        window.botpress.init({
+          botId: "c9431628-7bd8-45dc-a694-6d57f2e1670d",
+          clientId: "22a2f457-cec7-44db-8108-78b2e02e4638",
+          selector: "#webchat",
+          configuration: {
+            version: "v2",
+            color: "#3276EA",
+            variant: "solid",
+            headerVariant: "glass",
+            themeMode: "light",
+            fontFamily: "inter",
+            radius: 8,
+            feedbackEnabled: false,
+            soundEnabled: false,
+            proactiveMessageEnabled: false,
+            footer: "[⚡ by Botpress](https://botpress.com/?from=webchat)"
+          }
+        });
+      }
+      init();
+    })();
+  </script>
+
+  <script>
+    const d = new Date();
     const fmt = d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});
     document.getElementById('stamp').textContent = "Last updated: " + fmt;
   </script>
 </body>
 </html>
+
