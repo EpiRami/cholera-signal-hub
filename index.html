@@ -24,6 +24,45 @@
     .small{font-size:14px;color:var(--muted)}
   </style>
 </head>
+  <!-- Botpress inline webchat (v3) -->
+<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+<style>
+  /* Make the chat fill its container and hide the floating button */
+  #webchat .bpWebchat {
+    position: unset;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  #webchat .bpFab { display: none; }
+</style>
+<script>
+  // Mount inside the #webchat container and open immediately
+  window.botpress?.on("webchat:ready", () => {
+    window.botpress.open();
+  });
+
+  window.botpress.init({
+    botId: "c9431628-7bd8-45dc-a694-6d57f2e1670d",
+    clientId: "22a2f457-cec7-44db-8108-78b2e02e4638",
+    selector: "#webchat",              // <-- mount into your inline div
+    configuration: {
+      version: "v2",
+      color: "#3276EA",
+      variant: "solid",
+      headerVariant: "glass",
+      themeMode: "light",
+      fontFamily: "inter",
+      radius: 8,
+      feedbackEnabled: false,
+      soundEnabled: false,
+      proactiveMessageEnabled: false,
+      footer: "[⚡ by Botpress](https://botpress.com/?from=webchat)"
+    }
+  });
+</script>
+
 <body>
   <header>
     <div class="wrap">
