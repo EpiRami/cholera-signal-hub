@@ -61,12 +61,16 @@
 </div>
     </section>
 
-    <section id="assistant" class="card">
-      <h2>AI Decision Assistant</h2>
-      <p class="small">Answers strictly in an operational schema: Key findings → Implications → 3 Priority Actions → Risks → Monitor Next → Sources.</p>
-      <a class="btn" id="assistantLink" href="#" target="_blank" rel="noopener">Open Assistant</a>
-      <p class="small">We’ll replace the button link with your Custom GPT URL in Step 4.</p>
-    </section>
+ <section id="assistant" class="card">
+  <h2>AI Decision Assistant</h2>
+  <p class="small">Answers strictly in an operational schema: Key findings → Implications → 3 Priority Actions → Risks → Monitor Next → Sources.</p>
+
+  <!-- Inline Botpress container (fills the card) -->
+  <div id="webchat" style="width:100%; height:600px; border:1px solid #e8eef6; border-radius:14px; background:#fff; overflow:hidden"></div>
+
+  <p class="small">Public sources only (ReliefWeb/WHO/UNICEF/OCHA). AI support requires human validation.</p>
+</section>
+
 
     <section id="sources" class="card">
       <h2>Sources & Privacy</h2>
