@@ -6,19 +6,19 @@
   <title>Cholera Signal Hub — Yemen</title>
   <meta name="description" content="Public-signal dashboard and decision assistant for cholera in Yemen." />
   <style>
-    /* === Dark Navy Theme === */
+    /* === Blue & White Theme === */
     :root {
-      --bg:#0b1220;        /* page background */
-      --ink:#e9eef7;       /* primary text */
-      --muted:#9fb0c8;     /* secondary text */
-      --accent:#5aa0ff;    /* links/buttons */
-      --card:#121a2b;      /* card background */
-      --border:#253049;    /* borders */
+      --bg:#ffffff;
+      --ink:#0a1b2a;
+      --muted:#4d637d;
+      --accent:#1f6feb;
+      --card:#f8fafc;
+      --border:#d8e1ee;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial}
     a{color:var(--accent)}
-    header{padding:28px 20px;border-bottom:1px solid var(--border);background:#0f172a;position:sticky;top:0;z-index:1}
+    header{padding:28px 20px;border-bottom:1px solid var(--border);background:#ffffff;position:sticky;top:0;z-index:1}
     .wrap{max-width:980px;margin:0 auto;padding:0 20px}
     nav a{margin-right:16px;color:var(--ink);text-decoration:none;font-weight:600;opacity:.9}
     nav a:hover{opacity:1}
@@ -28,11 +28,11 @@
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin:18px 0}
     footer{margin:32px 0 24px;color:var(--muted);font-size:14px}
     .kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .kpi{background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:14px}
+    .kpi{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px}
     .small{font-size:14px;color:var(--muted)}
-    .btn{display:inline-block;padding:12px 16px;border-radius:10px;background:var(--accent);color:#0b1220;text-decoration:none;font-weight:700}
+    .btn{display:inline-block;padding:12px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
     .btn:hover{filter:brightness(1.05)}
-    .iframe-wrap{position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:#0f172a}
+    .iframe-wrap{position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:#fff}
     .iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
     @media (max-width:600px){ .iframe-wrap{padding-bottom:100%} }
   </style>
@@ -45,7 +45,7 @@
         <a href="#about">About</a>
         <a href="#context">Context</a>
         <a href="#dashboard">Dashboard</a>
-        <a href="#assistant">AI Assistant</a>
+        <a href="#interpretation">Interpretation</a>
         <a href="#sources">Sources & Privacy</a>
       </nav>
     </div>
@@ -77,14 +77,14 @@
       </p>
     </section>
 
-    <!-- Dashboard (tables only: Linelist demo + ReliefWeb signals) -->
+    <!-- Dashboard -->
     <section id="dashboard" class="card">
       <h2>Weekly Dashboard</h2>
       <p class="small">
         Tables only: (A) demo linelist for person–time–place, (B) public reports & summaries (ReliefWeb). Click titles to open sources.
       </p>
       <div class="iframe-wrap" aria-label="Embedded dashboard">
-        <!-- TODO: Replace the src below with your updated Looker Studio report URL that shows TWO TABLES (linelist + signals) -->
+        <!-- Replace with your updated Looker Studio report URL showing two tables -->
         <iframe
           src="https://lookerstudio.google.com/embed/reporting/4c6e38f7-02aa-4e57-9ec5-e6aaf27bcc8b/page/I3laF?ifg=1"
           allowfullscreen
@@ -93,16 +93,44 @@
       </div>
     </section>
 
-    <!-- AI Decision Assistant (ChatGPT link) -->
-    <section id="assistant" class="card">
-      <h2>AI Decision Assistant (ChatGPT)</h2>
+    <!-- Interpretation -->
+    <section id="interpretation" class="card">
+      <h2>Interpretation</h2>
       <p class="small">
-        Summarizes public signals and the demo linelist into operational insights.<br/>
-        Output schema: <em>Key findings → Implications → P1–P3 Actions → Risks → Monitor Next → Sources</em>.
+        Suspected cholera and acute watery diarrhoea (AWD) cases have been consistently reported in <strong>Amran Governorate</strong> over the past year.
+        Although this demo dataset represents a limited subset, the pattern mirrors field observations across northern Yemen, where population movements,
+        reduced water quality, and fragile health infrastructure continue to sustain transmission risks.
       </p>
-      <!-- TODO: Paste your Custom GPT share URL below -->
-      <a class="btn" href="PASTE_YOUR_CUSTOM_GPT_LINK_HERE" target="_blank" rel="noopener">Open AI Decision Assistant</a>
-      <p class="small">Tip: paste your published CSV links (signals / linelist) when prompted.</p>
+      <p class="small">
+        The synthetic linelist indicates that most suspected cases occurred among <strong>children under 15 years</strong> and
+        <strong>females were slightly predominant</strong>, reflecting typical vulnerability profiles in household-based exposures.
+        The majority of patients presented with <strong>moderate to severe dehydration</strong>, suggesting delays in seeking care or limited access to oral
+        rehydration points. Treatment outcomes were favorable overall, with high recovery rates and few recorded deaths, highlighting the importance of early
+        fluid replacement and accessible cholera treatment units (CTUs).
+      </p>
+      <p class="small">
+        Spatially, all records originate from <strong>Amran</strong>, underscoring the need for subdistrict-level mapping and case confirmation to differentiate
+        localized contamination from broader community spread. Temporal clustering around the <strong>mid-year rainy season</strong> (June–August)
+        corresponds to known seasonal peaks driven by flooding and water stagnation.
+      </p>
+      <p class="small">
+        Complementary public reports from <strong>MSF</strong> and the <strong>UNICEF/WASH Cluster</strong> between
+        <strong>October 2024 and September 2025</strong> describe recurrent increases in suspected AWD cases in multiple governorates, including Amran,
+        Al Hudaydah, and Hajjah. These align with observed linelist trends and reinforce the importance of multisectoral coordination—particularly WASH and
+        case management integration—to prevent secondary transmission.
+      </p>
+      <h3 style="font-size:18px;margin-top:20px">Conclusions</h3>
+      <ul class="small">
+        <li><strong>Sustained community transmission</strong> with recurrent spikes during the rainy season.</li>
+        <li><strong>High proportion of paediatric cases</strong>, suggesting gaps in household water treatment and hygiene practices.</li>
+        <li><strong>Effective clinical management</strong> where CTUs are functional, but uneven geographical access to care.</li>
+        <li><strong>Need for continuous monitoring</strong> of case-fatality rates, dehydration severity, and confirmation status.</li>
+        <li><strong>Stronger linkage</strong> between surveillance and WASH interventions is essential to sustain control and anticipate new surges.</li>
+      </ul>
+      <p class="small">
+        This interpretation is based on simulated data and public information only. It serves as an operational prototype illustrating how field teams could
+        integrate routine linelist and external signal data for rapid situational awareness.
+      </p>
     </section>
 
     <!-- Sources & Privacy -->
@@ -123,22 +151,15 @@
     </footer>
   </main>
 
-  <!-- Page utilities -->
   <script>
     const d = new Date();
     const fmt = d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});
     document.getElementById('stamp').textContent = "Last updated: " + fmt;
   </script>
 
-  <!-- === Botpress chat bubble (optional) ===
-       After you PUBLISH your Botpress bot, go to Share → Configure → Chat Bubble
-       and paste the two lines they give you directly below this comment.
-       Example:
-       <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
-       <script src="https://files.bpcontent.cloud/YYYY/MM/DD/HH/UNIQUE-ID.js"></script>
-  -->
-  <!-- TODO: Paste your TWO Botpress bubble script lines here (keep them last, just before </body>) -->
+  <!-- === Botpress Chatbot Bubble === -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/10/07/06/20251007062542-HJ1M60JZ.js" defer></script>
 
 </body>
 </html>
-
