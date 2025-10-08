@@ -6,41 +6,44 @@
   <title>Cholera Signal Hub — Yemen</title>
   <meta name="description" content="Public-signal dashboard and decision assistant for cholera in Yemen." />
   <style>
-    :root { --bg:#ffffff; --ink:#0a1b2a; --muted:#6b7a8c; --accent:#1f6feb; --card:#f4f7fb; }
+    /* === Dark Navy Theme === */
+    :root {
+      --bg:#0b1220;        /* page background */
+      --ink:#e9eef7;       /* primary text */
+      --muted:#9fb0c8;     /* secondary text */
+      --accent:#5aa0ff;    /* links/buttons */
+      --card:#121a2b;      /* card background */
+      --border:#253049;    /* borders */
+    }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial}
-    header{padding:28px 20px;border-bottom:1px solid #e8eef6;background:#fff;position:sticky;top:0;z-index:1}
+    a{color:var(--accent)}
+    header{padding:28px 20px;border-bottom:1px solid var(--border);background:#0f172a;position:sticky;top:0;z-index:1}
     .wrap{max-width:980px;margin:0 auto;padding:0 20px}
-    nav a{margin-right:16px;color:var(--ink);text-decoration:none;font-weight:600}
-    nav a:hover{color:var(--accent)}
+    nav a{margin-right:16px;color:var(--ink);text-decoration:none;font-weight:600;opacity:.9}
+    nav a:hover{opacity:1}
     h1{margin:14px 0 6px;font-size:28px}
     h2{margin:28px 0 10px;font-size:22px}
     .tagline{color:var(--muted);margin:0 0 6px}
-    .card{background:var(--card);border:1px solid #e8eef6;border-radius:16px;padding:18px;margin:18px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin:18px 0}
     footer{margin:32px 0 24px;color:var(--muted);font-size:14px}
     .kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .kpi{background:#fff;border:1px solid #e8eef6;border-radius:12px;padding:14px}
+    .kpi{background:#0f172a;border:1px solid var(--border);border-radius:12px;padding:14px}
     .small{font-size:14px;color:var(--muted)}
-    /* Responsive iframe wrapper */
-    .iframe-wrap{position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid #e8eef6;background:#fff}
+    .btn{display:inline-block;padding:12px 16px;border-radius:10px;background:var(--accent);color:#0b1220;text-decoration:none;font-weight:700}
+    .btn:hover{filter:brightness(1.05)}
+    .iframe-wrap{position:relative;padding-bottom:62%;height:0;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:#0f172a}
     .iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
     @media (max-width:600px){ .iframe-wrap{padding-bottom:100%} }
-  </style>
-
-  <!-- Botpress inline webchat (v3) -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
-  <style>
-    /* Fill the container & hide any floating button */
-    #webchat .bpWebchat { position: unset; width: 100%; height: 100%; max-width: 100%; max-height: 100%; }
-    #webchat .bpFab { display: none; }
   </style>
 </head>
 
 <body>
-  <header>
+  <header aria-label="Main">
     <div class="wrap">
-      <nav>
+      <nav aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#context">Context</a>
         <a href="#dashboard">Dashboard</a>
         <a href="#assistant">AI Assistant</a>
         <a href="#sources">Sources & Privacy</a>
@@ -49,21 +52,40 @@
   </header>
 
   <main class="wrap">
+    <!-- About -->
     <section id="about" class="card">
       <h1>Cholera Signal Hub — Yemen</h1>
       <p class="tagline">Turning public humanitarian signals into weekly visuals and operations-oriented summaries.</p>
       <div class="kpis">
         <div class="kpi"><strong>Scope</strong><br><span class="small">Public, institutional sources only</span></div>
-        <div class="kpi"><strong>Focus</strong><br><span class="small">Cholera situation updates (Yemen)</span></div>
+        <div class="kpi"><strong>Focus</strong><br><span class="small">Cholera/AWD situation updates (Yemen)</span></div>
         <div class="kpi"><strong>Status</strong><br><span class="small">Prototype for demo</span></div>
       </div>
     </section>
 
+    <!-- Context -->
+    <section class="card" id="context">
+      <h2>Context: Cholera in Yemen</h2>
+      <p class="small">
+        Cholera (acute watery diarrhoea caused by <em>Vibrio cholerae</em>) spreads rapidly where water, sanitation and hygiene (WASH) systems are disrupted.
+        Yemen has seen recurrent cholera/AWD surges over multiple years, with risk amplified by displacement, water scarcity, and fragile health services.
+      </p>
+      <p class="small">
+        <strong>MSF (Médecins Sans Frontières)</strong> typically intervenes via cholera treatment centres/units (CTCs/CTUs), oral rehydration points (ORPs),
+        community outreach, and WASH support (chlorination, waste management), alongside IPC training and support to health staff.
+        This prototype collates public signals to assist rapid situational awareness and decision support. It does not replace surveillance or official reporting.
+      </p>
+    </section>
+
+    <!-- Dashboard (tables only: Linelist demo + ReliefWeb signals) -->
     <section id="dashboard" class="card">
       <h2>Weekly Dashboard</h2>
-      <p class="small">Public signals summarized by week. Click titles to open sources.</p>
-      <div class="iframe-wrap">
-        <iframe 
+      <p class="small">
+        Tables only: (A) demo linelist for person–time–place, (B) public reports & summaries (ReliefWeb). Click titles to open sources.
+      </p>
+      <div class="iframe-wrap" aria-label="Embedded dashboard">
+        <!-- TODO: Replace the src below with your updated Looker Studio report URL that shows TWO TABLES (linelist + signals) -->
+        <iframe
           src="https://lookerstudio.google.com/embed/reporting/4c6e38f7-02aa-4e57-9ec5-e6aaf27bcc8b/page/I3laF?ifg=1"
           allowfullscreen
           sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
@@ -71,24 +93,27 @@
       </div>
     </section>
 
+    <!-- AI Decision Assistant (ChatGPT link) -->
     <section id="assistant" class="card">
-      <h2>AI Decision Assistant</h2>
-      <p class="small">Answers strictly in an operational schema: Key findings → Implications → 3 Priority Actions → Risks → Monitor Next → Sources.</p>
-
-      <!-- Inline Botpress container (fills this card) -->
-      <div id="webchat" style="width:100%; height:640px; border:1px solid #e8eef6; border-radius:14px; background:#fff; overflow:hidden"></div>
-
-      <p class="small">Public sources only (ReliefWeb/WHO/UNICEF/OCHA). AI support requires human validation.</p>
+      <h2>AI Decision Assistant (ChatGPT)</h2>
+      <p class="small">
+        Summarizes public signals and the demo linelist into operational insights.<br/>
+        Output schema: <em>Key findings → Implications → P1–P3 Actions → Risks → Monitor Next → Sources</em>.
+      </p>
+      <!-- TODO: Paste your Custom GPT share URL below -->
+      <a class="btn" href="PASTE_YOUR_CUSTOM_GPT_LINK_HERE" target="_blank" rel="noopener">Open AI Decision Assistant</a>
+      <p class="small">Tip: paste your published CSV links (signals / linelist) when prompted.</p>
     </section>
 
+    <!-- Sources & Privacy -->
     <section id="sources" class="card">
       <h2>Sources & Privacy</h2>
-      <ul>
-        <li>Public institutional feeds only (e.g., ReliefWeb, WHO, UNICEF).</li>
-        <li>No personal social media, no PII/GPS, no patient-level data.</li>
-        <li>Each dashboard chart should show the items and dates used.</li>
+      <ul class="small">
+        <li>Demo linelist is <strong>synthetic</strong> and contains no personal identifiers.</li>
+        <li>Public reports from institutional sources (e.g., ReliefWeb, WHO, UNICEF, OCHA).</li>
+        <li>No personal social media, no PII or precise GPS, no patient-level data.</li>
+        <li>AI support requires human validation; signals are not ground truth.</li>
       </ul>
-      <p class="small">Disclaimer: AI support requires human validation. Signals are not ground truth.</p>
     </section>
 
     <footer>
@@ -98,39 +123,22 @@
     </footer>
   </main>
 
-  <!-- Botpress init (mounts into #webchat) -->
-  <script>
-    window.botpress?.on("webchat:ready", () => {
-      window.botpress.open();
-    });
-    window.botpress.init({
-      botId: "c9431628-7bd8-45dc-a694-6d57f2e1670d",
-      clientId: "22a2f457-cec7-44db-8108-78b2e02e4638",
-      selector: "#webchat",
-      configuration: {
-        version: "v2",
-        color: "#3276EA",
-        variant: "solid",
-        headerVariant: "glass",
-        themeMode: "light",
-        fontFamily: "inter",
-        radius: 4,
-        feedbackEnabled: false,
-        footer: "[⚡ by Botpress](https://botpress.com/?from=webchat)",
-        soundEnabled: false,
-        proactiveMessageEnabled: false,
-        proactiveBubbleMessage: "Hi! 👋 Need help?",
-        proactiveBubbleTriggerType: "afterDelay",
-        proactiveBubbleDelayTime: 10
-      }
-    });
-  </script>
-
+  <!-- Page utilities -->
   <script>
     const d = new Date();
     const fmt = d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});
     document.getElementById('stamp').textContent = "Last updated: " + fmt;
   </script>
+
+  <!-- === Botpress chat bubble (optional) ===
+       After you PUBLISH your Botpress bot, go to Share → Configure → Chat Bubble
+       and paste the two lines they give you directly below this comment.
+       Example:
+       <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+       <script src="https://files.bpcontent.cloud/YYYY/MM/DD/HH/UNIQUE-ID.js"></script>
+  -->
+  <!-- TODO: Paste your TWO Botpress bubble script lines here (keep them last, just before </body>) -->
+
 </body>
 </html>
 
